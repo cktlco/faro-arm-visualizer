@@ -81,17 +81,17 @@ Additionally, there are many valuable resources available in the knowledge base 
 7. Now attach any custom program you wish to the zeromq socket used by the C# service (on any machine, local or network)
 
 ... and if you wish to use the Unity Visualizer component:
-8. Install Unity (tested w/2019.*)
-9. Copy the "net40" version of the AsyncIO.dll and NetMQ.dll files from the Visual Studio project directory to the Unity project directory
+1. Install Unity (tested w/2019)
+2. Copy the "net40" version of the AsyncIO.dll and NetMQ.dll files from the Visual Studio project directory to the Unity project directory
     For example, copy `Arm Position Update Service\packages\AsyncIO.0.1.69\lib\net40\AsyncIO.dll` to `Unity Visualizer\Assets\Plugins\AsyncIO.dll`
                  and `Arm Position Update Service\packages\NetMQ.4.0.0.207\lib\net40\NetMQ.dll` to `Unity Visualizer\Assets\Plugins\NetMQ.dll`
     I believe these need to be .NET 4.0 build targets to match the rest of Unity's framework (as of July 2020). One way or another, just get NetMQ library support working in Unity -- it's a pretty common/documented topic.
-10. Open Unity Hub and point to an existing project rooted in this repo's `Unity Visualizer` directory.
-11. Unity will take a long time to start (5-10 min) as it imports and verifies all the project assets, packages, metadata, rebuilds caches, etc. This is a one-time operation, but necessary since including those thousands of local, build-specific files in the repo is not desirable.
-12. Open the only Scene in the project: `\Assets\Scenes\Faro Arm Quantum.unity`
-13. Click on the "Arm" GameObject in the Hierarchy panel and review the "Arm Joint Controller" component. These values, alongside the corresponding logic in `\Assets\Scripts\ArmJointController`, are what you will manipulate to make the on-screen 3D model move in sync with the physical Faro Arm instrument.
-14. Click the "Play" button in the Unity Editor. You may wish to switch from the Game window back to the Scene window so you can move your view freely.
-15. Positional updates will be applied smoothly in near real-time, providing an approximate representation of the arm's real world position.
+3. Open Unity Hub and point to an existing project rooted in this repo's `Unity Visualizer` directory.
+4. Unity will take a long time to start (5-10 min) as it imports and verifies all the project assets, packages, metadata, rebuilds caches, etc. This is a one-time operation, but necessary since including those thousands of local, build-specific files in the repo is not desirable.
+5. Open the only Scene in the project: `\Assets\Scenes\Faro Arm Quantum.unity`
+6. Click on the "Arm" GameObject in the Hierarchy panel and review the "Arm Joint Controller" component. These values, alongside the corresponding logic in `\Assets\Scripts\ArmJointController`, are what you will manipulate to make the on-screen 3D model move in sync with the physical Faro Arm instrument.
+7. Click the "Play" button in the Unity Editor. You may wish to switch from the Game window back to the Scene window so you can move your view freely.
+8. Positional updates will be applied smoothly in near real-time, providing an approximate representation of the arm's real world position.
 
 
 ## Troubleshooting
