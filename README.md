@@ -1,7 +1,11 @@
 # faro-arm-visualizer
 **A suite of unofficial, open-source utilities enabling basic software integration with the FaroArm series of high-accuracy articulated measuring instruments, including a realtime 3D position tracking demonstration in Unity.**
 
+<img align="right" alt="Animated image showing 3D model movement" src="faro-arm-visualizer.gif">
+
 **The FaroArm&reg; is Faro Technologies's product line of portable Coordinate Measuring Machines (CMM). The FaroArm is a high-accuracy 3D digital measuring instrument, engineered for two primary use cases:**
+
+<img align="left" alt="Photo of a FaroArm Quantum G3" src="faro-arm-photo.png">
 
    1) CAD-based Inspection. For metal or plastic items that are designed with a computer then physically manufactured, using companion software, points on the virtual model can be compared with points physically measured with the arm to identify if the manufacturing process is able to match the required accuracy (ie, does the part you made match your original drawings, and if not, which dimensions are out of spec).
 
