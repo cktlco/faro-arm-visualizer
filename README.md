@@ -14,16 +14,16 @@ Additionally, there are many valuable resources available in the knowledge base 
 
 ## Repo Structure
 
-- Arm Position Update Service\    --  Service which publishes Arm Position events over zeromq, C# Visual Studio 2019 solution
-- Arm Position Update Service\FaroArmPositionService.cs    --  all relevant code and documentation is in this file
-- Arm Position Update Service\bin\x64\Debug\Faro*.dll    -- not included in repo, see detailed comments in FaroArmPositionService.cs 
+- `Arm Position Update Service\`    --  Service which publishes Arm Position events over zeromq, C# Visual Studio 2019 solution
+- `Arm Position Update Service\FaroArmPositionService.cs`    --  all relevant code and documentation is in this file
+- `Arm Position Update Service\bin\x64\Debug\Faro*.dll`    -- not included in repo, see detailed comments in FaroArmPositionService.cs 
 
-- Unity Visualizer\   -- Unity project, Open in Unity 2019.4.4f1 or similar
-- Unity Visualizer\Assets\Scenes\Faro Arm Quantum.unity    -- the main scene
-- Unity Visualizer\Assets\Scenes\Models\faro arm\    -- 3d model of a FaroArm[^1], multiple 3d solid model and mesh formats
-- Unity Visualizer\Assets\Plugins\NetMQ.dll, AsyncIO.dll    -- zeromq library. if needed, replace these with a more recent version (these were pulled from NuGet in July 2020)
-- Unity Visualizer\Assets\Scripts\ArmJointController.cs    -- primary script, listens for zmq messages with arm position and updates arm 3d model. undocumented support for virtual laser weaponry.
-- Unity Visualizer\Assets\Scripts\PointCloudMaker.cs    -- stub example script integrating arm position data with a Unity ParticleSystem
+- `Unity Visualizer\`   -- Unity project, Open in Unity 2019.4.4f1 or similar
+- `Unity Visualizer\Assets\Scenes\Faro Arm Quantum.unity`    -- the main scene
+- `Unity Visualizer\Assets\Scenes\Models\faro arm\`    -- 3d model of a FaroArm[^1], multiple 3d solid model and mesh formats
+- `Unity Visualizer\Assets\Plugins\NetMQ.dll, AsyncIO.dll`    -- zeromq library. if needed, replace these with a more recent version (these were pulled from NuGet in July 2020)
+- `Unity Visualizer\Assets\Scripts\ArmJointController.cs`    -- primary script, listens for zmq messages with arm position and updates arm 3d model. undocumented support for virtual laser weaponry.
+- `Unity Visualizer\Assets\Scripts\PointCloudMaker.cs`    -- stub example script integrating arm position data with a Unity ParticleSystem
 
 [^1]: External reference: [3D Model of a representative FARO Arm](https://grabcad.com/library/faro-arm) from GrabCAD user Joerg Schmit, circa Feb 2012. It doesn't match any FARO model exactly, but is very close, and extremely convenient so that I did not have to create a similar model myself. This mesh's arm tube lengths will need additional compensation/calibration procedures to sync with the real-world arm better than a few millimeters, but the model has been very valuable for visualization. Although it should work ok in theory, I do not expect this model to be accurate enough to rely on the result of any forward kinematics position calculations based on the model joints, as those will not exactly match the measured position calculation values (XYZ,ABC) returned by the arm or driver itself, which will represent the probe tip position more accurately (by multiple orders of magnitude) when mounted rigidly with a properly compensated probe.
 
