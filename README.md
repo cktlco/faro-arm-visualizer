@@ -63,23 +63,31 @@ Additionally, there are many valuable resources available in the knowledge base 
 
 1. Mount, turn on, and otherwise prepare the FaroArm for normal use, including installing drivers from faro.com
 2. Start the FaroArm Manager application (installed with the driver package), and connect to your arm. Verify that you are able to see arm position updates in the Diagnostics section of the application before proceeding.
+
 2. Using git, clone this repo into a local directory
-3. Open the Visual Studio solution in "Arm Position Update Service"
+
+3. Open the Visual Studio solution in "Arm Position Update Service".
+   Change the "Solution Platforms" dropdown from "Any CPU" to "x64", so we can match the native code Faro libraries.
 4. In Visual Studio, Tools->NuGet Package Manager->Manage... and add (in no particular order):
     a. System.Text.Json
     b. NetMQ
-    c. AsyncIO
-5. Copy the "net40" version of the AsyncIO.dll and NetMQ.dll files from the Visual Studio project directory.
-   For example, copy `Arm Position Update Service\packages\AsyncIO.0.1.69\lib\net40\AsyncIO.dll` to `Unity Visualizer\Assets\Plugins\AsyncIO.dll`
-6. Copy the Faro Driver DLLs from their original installation directory directly into the C# project build directory (this is a workaround for a library reference problem I couldn't solve)
-   For example, copy `C:\Program Files\Common Files\FARO Shared\*.*` into `Arm Position Update Service\bin\x64\Debug\`.
-7. Build and start the C# application (ie, click Play button in Visual Studio). Verify that no critical errors are reported, and you should see the console log print your arm's serial number once connected. Press the arm probe buttons to print out probe tip coordinates.
-8. Now attach any custom program you wish to the zeromq socket used by the C# service (on any machine, local or network)
+    c. AsyncIO (probably already installed as part of NetMQ, but verify)
+5. Copy the Faro Driver DLLs from their original installation directory directly into the C# project build directory (this is a workaround for a library reference problem I couldn't solve)
+   For example, copy `C:\Program Files\Common Files\FARO Shared\*.*` into `Arm Position Update Service\bin\x64\Debug\`
+6. Build and start the C# application (ie, click Play button in Visual Studio).
+   You may be asked for Windows Firewall permission for the console app since we are binding to a TCP port.
+   Verify that no critical errors are reported, and you should see the console log print your arm's serial number once connected.
+   Press the arm probe buttons to print out probe tip coordinates.
+7. Now attach any custom program you wish to the zeromq socket used by the C# service (on any machine, local or network)
 
 ... and if you wish to use the Unity Visualizer component:
-9. Install Unity (tested w/2019.*)
-10. Open Unity Hub and point to an existing project in the `Unity Visualizer` directory.
-11. Unity will take a long time to start (> 5 min) as it imports and verifies all the project metadata, rebuilds caches, etc. This is a one-time operation but necessary since including those thousands of local, build-specific files in the repo is not desirable.
+8. Install Unity (tested w/2019.*)
+9. Copy the "net40" version of the AsyncIO.dll and NetMQ.dll files from the Visual Studio project directory to the Unity project directory
+    For example, copy `Arm Position Update Service\packages\AsyncIO.0.1.69\lib\net40\AsyncIO.dll` to `Unity Visualizer\Assets\Plugins\AsyncIO.dll`
+                 and `Arm Position Update Service\packages\NetMQ.4.0.0.207\lib\net40\NetMQ.dll` to `Unity Visualizer\Assets\Plugins\NetMQ.dll`
+    I believe these need to be .NET 4.0 build targets to match the rest of Unity's framework (as of July 2020). One way or another, just get NetMQ library support working in Unity -- it's a pretty common/documented topic.
+10. Open Unity Hub and point to an existing project rooted in this repo's `Unity Visualizer` directory.
+11. Unity will take a long time to start (5-10 min) as it imports and verifies all the project assets, packages, metadata, rebuilds caches, etc. This is a one-time operation, but necessary since including those thousands of local, build-specific files in the repo is not desirable.
 12. Open the only Scene in the project: `\Assets\Scenes\Faro Arm Quantum.unity`
 13. Click on the "Arm" GameObject in the Hierarchy panel and review the "Arm Joint Controller" component. These values, alongside the corresponding logic in `\Assets\Scripts\ArmJointController`, are what you will manipulate to make the on-screen 3D model move in sync with the physical Faro Arm instrument.
 14. Click the "Play" button in the Unity Editor. You may wish to switch from the Game window back to the Scene window so you can move your view freely.
