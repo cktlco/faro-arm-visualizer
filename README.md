@@ -96,7 +96,7 @@ Additionally, there are many valuable resources available in the knowledge base 
 
 ## Troubleshooting
 
-Q: Why should anyone care about this?
+Q: **Why should anyone care about this?**
 
 A: This repo provides a capability that does not exist elsewhere: enabling unofficial support for anyone with a FaroArm to read the arm's probe coordinates into custom-built software. Although the FaroArm USB driver is available freely from faro.com, there are no public examples of how to utilize the driver SDK or arm position data in a custom integration.
 
@@ -105,26 +105,26 @@ As the technology ages, more of these products are finding their way from their 
 So... since I was able to pull the key data out of the arm hardware in real-time and use it for my own nefarious purposes, and since there is essentially zero documentation on the subject... please experiment with the details herein if you are interested.
 
 
-Q: Why does Unity freeze if I make changes on the C# side while the Unity Editor is in Play mode?
+Q: **Why does Unity freeze if I make changes on the C# side while the Unity Editor is in Play mode?**
 
 A: This is a known issue with NetMQ and Unity, similar issues occur without the AsyncIO.ForceDotNet.Force() and NetMQConfig.Cleanup(false) calls... seems like the multiple event loops and secondary threads need a lot to stay in sync without crashes/freezes, but all generally works ok as long as C# script edits are not made while the Editor is in Play mode. Alternately, you may be able to disable the automatic reimport when Unity regains focus, but that's a hassle for other workflow reasons.
 
 
-Q: How do I resolve the Visual Studio "File Not Found" error for FaroArm.Net.dll during runtime?
+Q: **How do I resolve the Visual Studio "File Not Found" error for FaroArm.Net.dll during runtime?**
 
 A: I had a lot of issues with this until I copied all the Faro DLLs directly into the Visual Studio project's bin dir as described above. For several of the DLLs (the native code ones that are not .NET assemblies, I think), Visual Studio did not want to create the correct project references from the Set References menu item, and so they never got automatically copied into that bin dir by the build process like the other package libraries. Not sure why.
 
 
-Q: ...and if I don't know how to use Unity?
+Q: **...and if I don't know how to use Unity?**
 
 A: Don't worry, just play around with the core C# publisher service. Once you can connect to your arm and read the positional event data, figure out next steps.
 
 
-Q: Why does the arm model get all wonky when I hit Play in the Unity Editor? It doesn't match my arm movement at all!
+Q: **Why does the arm model get all wonky when I hit Play in the Unity Editor? It doesn't match my arm movement at all!**
 
 A: Expect that you will have to play with all of *Adj values in the ArmJointController component in the demo scene, perhaps extensively. You may need to rewrite all the code and/or manipulate the "Arm" GameObject hierarchy in order to get things in sync. This may be difficult if you are not familiar with Unity, but in that case, don't worry so much about representing the joint angles and just focus on the X,Y,Z point returned with each arm update message, and try to visualize that in a simpler way in 3D space.
 
 
-Q: Which CPU architectures does this support?
+Q: **Which CPU architectures does this support?**
 
 A: It has only been tested successfully with a Windows 10 x64 build of the C# Arm Position Update Service, but it's possible that with extended tinkering you could get 32-bit support working. All the external references (including the FARO driver itself) will have to use the corresponding 32-bit versions.
