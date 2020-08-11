@@ -40,7 +40,9 @@ using NetMQ;  // C# zmq bindings
 ///   
 ///   NetMQ - C# implementation of zeromq: Install via Tools->NuGet in Visual Studio, and manually include AsyncIO.dll
 ///          and NetMQ.dll in your Unity project manually (create an Assets\Plugins dir).
-///          
+///
+///   System.Text.Json, Microsoft's JSON serialization library. Install via NuGet as with NetMQ.
+///
 ///   Faro Arm Driver (a recent version as of mid-2020)
 ///   
 ///   Faro Arm Manager, UI software installed with the driver. Start first and keep running once arm is connected.
@@ -48,7 +50,8 @@ using NetMQ;  // C# zmq bindings
 ///   Faro Arm Position Service (FaroArmPositionService.cs), a .NET Console app which connects to the arm via
 ///       .NET DLLs from the official driver and very frequently publishes a JSON object via zeromq including
 ///       arm movement, button presses, encoder joint angles, etc.
-///       
+///
+///   Faro Arm Driver DLL files
 ///       NOTE: I had a lot of difficulty getting the Visual Studio project to properly reference the FARO Driver DLLs
 ///             in their originally installed location (C:\Program Files\Common Files\FARO Shared\), but I was able to
 ///             get things working by copying all the DLL files from that location to the project's \bin\x64\Debug
