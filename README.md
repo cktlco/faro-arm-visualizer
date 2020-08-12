@@ -3,7 +3,7 @@
 
 <img align="right" alt="Animated image showing 3D model movement" src="faro-arm-visualizer.gif">
 
-**The FaroArm&reg; is Faro Technologies's product line of portable Coordinate Measuring Machines (CMM). The FaroArm is a high-accuracy 3D digital measuring instrument, engineered for two primary use cases:**
+**The FaroArm&reg; is Faro Technologies' product line of portable Coordinate Measuring Machines (CMM). The FaroArm is a high-accuracy 3D digital measuring instrument, engineered for two primary use cases:**
 
 <img align="left" alt="Photo of a FaroArm Quantum G3" src="faro-arm-photo.png">
 
